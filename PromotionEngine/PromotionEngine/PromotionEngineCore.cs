@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 namespace PromotionEngine
 {
     public class PromotionEngineCore : IPromotionEngine
     {
-        public decimal CalculatePrice()
+        public decimal CalculatePrice(List<ProductDetails> orders, Dictionary<char, decimal> ProductDetails, IEnumerable<Promotions> Promotions)
         {
-            IEnumerable<Promotions> Promotions = PromotionData.Promotions;
-            var ProductDetails = Products.ProductDetails;
-            var orders = Orders.OrderDetails.ToList();
+            //IEnumerable<Promotions> Promotions = PromotionData.Promotions;
+            //var ProductDetails = Products.ProductDetails;
+           
             decimal totalPrice = 0;
             int quantity = 0;
             for (int i = 0; i < orders.Count; i++)

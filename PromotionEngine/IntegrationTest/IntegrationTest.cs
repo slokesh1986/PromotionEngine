@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PromotionEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IntegrationTest
 {
@@ -17,9 +18,9 @@ namespace IntegrationTest
         public void CalculatePrice()
         {
 
-            Orders.OrderDetails = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 5 }, new ProductDetails() { ProductName = 'B', Quantity = 2 },
+            var orders= new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 5 }, new ProductDetails() { ProductName = 'B', Quantity = 2 },
             new ProductDetails() { ProductName = 'C', Quantity = 5 },new ProductDetails() { ProductName = 'D', Quantity = 8 }};
-            var finalPrice = promotionEngine.CalculatePrice();
+            var finalPrice = promotionEngine.CalculatePrice(orders, Products.ProductDetails, PromotionData.Promotions);
             Assert.AreEqual(finalPrice, 470);
 
         }
@@ -29,9 +30,9 @@ namespace IntegrationTest
         public void CalculatePriceTestCase1()
         {
 
-            Orders.OrderDetails = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 1 }, new ProductDetails() { ProductName = 'B', Quantity = 1 },
+           var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 1 }, new ProductDetails() { ProductName = 'B', Quantity = 1 },
             new ProductDetails() { ProductName = 'C', Quantity = 1 },new ProductDetails() { ProductName = 'D', Quantity = 0 }};
-            var finalPrice = promotionEngine.CalculatePrice();
+            var finalPrice = promotionEngine.CalculatePrice(orders, Products.ProductDetails, PromotionData.Promotions);
             Assert.AreEqual(finalPrice, 100);
 
         }
@@ -43,9 +44,9 @@ namespace IntegrationTest
         public void CalculatePriceTestCase2()
         {
 
-            Orders.OrderDetails = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 5 }, new ProductDetails() { ProductName = 'B', Quantity = 5 },
+            var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 5 }, new ProductDetails() { ProductName = 'B', Quantity = 5 },
             new ProductDetails() { ProductName = 'C', Quantity = 1 },new ProductDetails() { ProductName = 'D', Quantity = 0 }};
-            var finalPrice = promotionEngine.CalculatePrice();
+            var finalPrice = promotionEngine.CalculatePrice(orders, Products.ProductDetails, PromotionData.Promotions);
             Assert.AreEqual(finalPrice, 370);
 
         }
@@ -55,9 +56,9 @@ namespace IntegrationTest
         public void CalculatePriceTestCase3()
         {
 
-            Orders.OrderDetails = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 3 }, new ProductDetails() { ProductName = 'B', Quantity = 5 },
+            var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 3 }, new ProductDetails() { ProductName = 'B', Quantity = 5 },
             new ProductDetails() { ProductName = 'C', Quantity = 1 },new ProductDetails() { ProductName = 'D', Quantity = 1 }};
-            var finalPrice = promotionEngine.CalculatePrice();
+            var finalPrice = promotionEngine.CalculatePrice(orders, Products.ProductDetails, PromotionData.Promotions);
             Assert.AreEqual(finalPrice, 280);
 
         }
@@ -69,9 +70,9 @@ namespace IntegrationTest
         public void CalculatePriceOverridingOrderDetails()
         {
 
-            Orders.OrderDetails = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 2 }, new ProductDetails() { ProductName = 'B', Quantity = 3 },
+           var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 2 }, new ProductDetails() { ProductName = 'B', Quantity = 3 },
             new ProductDetails() { ProductName = 'C', Quantity = 1 },new ProductDetails() { ProductName = 'D', Quantity = 1 }};
-            var finalPrice = promotionEngine.CalculatePrice();
+            var finalPrice = promotionEngine.CalculatePrice(orders, Products.ProductDetails, PromotionData.Promotions);
             Assert.AreEqual(finalPrice, 205);
 
         }
@@ -79,14 +80,14 @@ namespace IntegrationTest
         [Description("Overiding the order quantity")]
         public void CalculatePriceOverridingProductDetails()
         {
-            PromotionData.Promotions = new List<Promotions>() { new Promotions() { ProductPromotions = new List<ProductDetails>() {
+            var promotions = new List<Promotions>() { new Promotions() { ProductPromotions = new List<ProductDetails>() {
         new ProductDetails(){ ProductName='A', Quantity =3 } }, Price =100 },
                     new Promotions() { ProductPromotions = new List<ProductDetails>() {
         new ProductDetails(){ ProductName='B', Quantity =2 } }, Price =30 },
         new Promotions() { ProductPromotions = new List<ProductDetails>() {
         new ProductDetails(){ ProductName='C', Quantity =1 } ,new ProductDetails(){ ProductName='D', Quantity =1 }} ,
         Price = 20}};
-            var finalPrice = promotionEngine.CalculatePrice();
+            var finalPrice = promotionEngine.CalculatePrice(Orders.OrderDetails.ToList(), Products.ProductDetails, promotions);
             Assert.AreEqual(finalPrice, 375);
 
         }
