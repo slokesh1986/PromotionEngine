@@ -50,6 +50,17 @@ namespace IntegrationTest
 
         }
 
+        [TestMethod]
+        [Description("Test case given in the PDF -3")]
+        public void CalculatePriceTestCase3()
+        {
+
+            Orders.OrderDetails = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 3 }, new ProductDetails() { ProductName = 'B', Quantity = 5 },
+            new ProductDetails() { ProductName = 'C', Quantity = 1 },new ProductDetails() { ProductName = 'D', Quantity = 1 }};
+            var finalPrice = promotionEngine.CalculatePrice();
+            Assert.AreEqual(finalPrice, 280);
+
+        }
 
 
 
