@@ -2,7 +2,7 @@
 
 namespace PromotionEngine
 {
-    public  class Orders
+    public class Orders
     {
         public static IEnumerable<ProductDetails> OrderDetails { get; set; }
         static Orders()

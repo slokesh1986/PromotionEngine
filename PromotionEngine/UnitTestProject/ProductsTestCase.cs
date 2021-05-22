@@ -14,8 +14,8 @@ namespace UnitTestProject
              {'D',25 } };
         [TestMethod]
         public void ChangeRatesforProducts()
-        {         
-          new Products(ProductDetails);
+        {
+            new Products(ProductDetails);
             Assert.AreEqual(100, Products.ProductDetails['A']);
             Assert.AreEqual(80, Products.ProductDetails['B']);
             Assert.AreEqual(15, Products.ProductDetails['C']);
