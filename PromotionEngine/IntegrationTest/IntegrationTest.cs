@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PromotionEngine;
-using System;
 using System.Collections.Generic;
 
 namespace IntegrationTest

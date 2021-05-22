@@ -30,7 +30,7 @@ namespace PromotionEngine
                             }
                             else
                             {
-                                totalPrice = totalPrice + orders[i].Quantity * ProductDetails[orders[i].ProductName];
+                                totalPrice += orders[i].Quantity * ProductDetails[orders[i].ProductName];
                             }
                         }
                         else
@@ -62,12 +62,12 @@ namespace PromotionEngine
                         {
                             if (data.Any(t => t.Items == 0))
                             {
-                                totalPrice = totalPrice + (orders[i].Quantity * ProductDetails[orders[i].ProductName]);
+                                totalPrice += (orders[i].Quantity * ProductDetails[orders[i].ProductName]);
                             }
                             else
                             {
                                 var firstItem = data.OrderBy(t => t.Items).First();
-                                totalPrice = totalPrice + (item.Price * firstItem.Items);
+                                totalPrice += (item.Price * firstItem.Items);
                                 foreach (var tItem in data)
                                 {
                                     totalPrice = totalPrice + (tItem.RemainingItems * ProductDetails[tItem.ProductName]) + ((tItem.Items - firstItem.Items) * tItem.PromotionItems * ProductDetails[tItem.ProductName]);
