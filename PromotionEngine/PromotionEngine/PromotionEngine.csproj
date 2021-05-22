@@ -49,6 +49,7 @@
     <Compile Include="Products.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="PromotionData.cs" />
+    <Compile Include="PromotionEngineCore.cs" />
     <Compile Include="Promotions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemainingProductData.cs" />
