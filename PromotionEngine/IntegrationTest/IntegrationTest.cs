@@ -23,6 +23,18 @@ namespace IntegrationTest
             Assert.AreEqual(finalPrice, 470);
 
         }
+
+        [TestMethod]
+        [Description("Test case given in the PDF -1")]
+        public void CalculatePriceTestCase1()
+        {
+
+            Orders.OrderDetails = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 1 }, new ProductDetails() { ProductName = 'B', Quantity = 1 },
+            new ProductDetails() { ProductName = 'C', Quantity = 1 },new ProductDetails() { ProductName = 'D', Quantity = 0 }};
+            var finalPrice = promotionEngine.CalculatePrice();
+            Assert.AreEqual(finalPrice, 100);
+
+        }
         [TestMethod]
         [Description("Overiding the order quantity")]
         public void CalculatePriceOverridingOrderDetails()
