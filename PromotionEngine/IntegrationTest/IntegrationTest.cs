@@ -18,7 +18,7 @@ namespace IntegrationTest
         public void CalculatePrice()
         {
 
-            var orders= new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 5 }, new ProductDetails() { ProductName = 'B', Quantity = 2 },
+            var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 5 }, new ProductDetails() { ProductName = 'B', Quantity = 2 },
             new ProductDetails() { ProductName = 'C', Quantity = 5 },new ProductDetails() { ProductName = 'D', Quantity = 8 }};
             var finalPrice = promotionEngine.CalculatePrice(orders, Products.ProductDetails, PromotionData.Promotions);
             Assert.AreEqual(finalPrice, 470);
@@ -30,7 +30,7 @@ namespace IntegrationTest
         public void CalculatePriceTestCase1()
         {
 
-           var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 1 }, new ProductDetails() { ProductName = 'B', Quantity = 1 },
+            var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 1 }, new ProductDetails() { ProductName = 'B', Quantity = 1 },
             new ProductDetails() { ProductName = 'C', Quantity = 1 },new ProductDetails() { ProductName = 'D', Quantity = 0 }};
             var finalPrice = promotionEngine.CalculatePrice(orders, Products.ProductDetails, PromotionData.Promotions);
             Assert.AreEqual(finalPrice, 100);
@@ -70,7 +70,7 @@ namespace IntegrationTest
         public void CalculatePriceOverridingOrderDetails()
         {
 
-           var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 2 }, new ProductDetails() { ProductName = 'B', Quantity = 3 },
+            var orders = new List<ProductDetails>() { new ProductDetails() { ProductName = 'A', Quantity = 2 }, new ProductDetails() { ProductName = 'B', Quantity = 3 },
             new ProductDetails() { ProductName = 'C', Quantity = 1 },new ProductDetails() { ProductName = 'D', Quantity = 1 }};
             var finalPrice = promotionEngine.CalculatePrice(orders, Products.ProductDetails, PromotionData.Promotions);
             Assert.AreEqual(finalPrice, 205);

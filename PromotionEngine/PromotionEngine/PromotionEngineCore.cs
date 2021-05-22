@@ -6,9 +6,7 @@ namespace PromotionEngine
     {
         public decimal CalculatePrice(List<ProductDetails> orders, Dictionary<char, decimal> ProductDetails, IEnumerable<Promotions> Promotions)
         {
-            //IEnumerable<Promotions> Promotions = PromotionData.Promotions;
-            //var ProductDetails = Products.ProductDetails;
-           
+
             decimal totalPrice = 0;
             int quantity = 0;
             for (int i = 0; i < orders.Count; i++)
