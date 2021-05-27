@@ -6,5 +6,6 @@ namespace PromotionEngine
     {
         public IEnumerable<ProductDetails> ProductPromotions { get; set; }
         public decimal Price { get; set; }
+        public int MyProperty { get; set; }
     }
 }
