@@ -12,6 +12,7 @@ namespace PromotionEngine
         };
 
         public int MyProperty { get; set; }
+        public int MyProperty1 { get; set; }
         public Products(Dictionary<char, decimal> productDetails)
         {
             ProductDetails = productDetails;
